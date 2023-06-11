@@ -5,7 +5,7 @@ namespace app\modules\user\controllers;
 use yii\web\Controller;
 
 /**
- * Default controller for the `feedback` module
+ * Default controller for the `comment` module
  */
 class DefaultController extends Controller
 {

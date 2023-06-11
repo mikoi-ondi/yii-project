@@ -2,13 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\SignupForm;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\modules\comment\models\Comment;
 
 class SiteController extends Controller
 {
@@ -51,6 +54,11 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'components' => [
+                'mailer' => [
+                    'class' => 'yii\swiftmailer\Mailer'
+                ]
+            ]
         ];
     }
 
@@ -61,7 +69,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Comment::find();
+        $count = $query->count();
+
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 10]);
+        $comments = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
+        return $this->render('index', [
+            'comments' => $comments,
+            'pagination' => $pagination
+        ]);
     }
 
     /**
@@ -84,6 +103,20 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if(Yii::$app->request->isPost)
+        {
+            $model->load(Yii::$app->request->post());
+            if($model->signup())
+            {
+                return $this->redirect(['site/login']);
+            }
+        }
+        return $this->render('signup', ['model' => $model]);
     }
 
     /**

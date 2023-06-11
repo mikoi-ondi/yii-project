@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\feedback\models\Feedback $model */
+/** @var \app\modules\comment\models\Comment $model */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];

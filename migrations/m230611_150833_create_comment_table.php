@@ -3,21 +3,21 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%feedback}}`.
+ * Handles the creation of table `{{%comment}}`.
  */
-class m230608_064257_create_feedback_table extends Migration
+class m230611_150833_create_comment_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%feedback}}', [
+        $this->createTable('{{%comment}}', [
             'id' => $this->primaryKey(),
-            'title' => $this->char(),
+            'title' => $this->string(),
             'text' => $this->text(),
             'id_author' => $this->integer(),
-            'rating' => $this->char(),
+            'rating' => $this->integer(),
             'created_at' => $this->timestamp()
         ]);
     }
@@ -27,6 +27,7 @@ class m230608_064257_create_feedback_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%feedback}}');
+        $this->dropTable('{{%comment}}');
     }
 }
+

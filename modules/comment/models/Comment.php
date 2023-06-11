@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\feedback\models;
+namespace app\modules\comment\models;
 
 /**
- * This is the model class for table "feedback".
+ * This is the model class for table "comment".
  *
  * @property int $id
  * @property string|null $title
@@ -12,14 +12,14 @@ namespace app\modules\feedback\models;
  * @property string|null $rating
  * @property string|null $created_at
  */
-class Feedback extends \yii\db\ActiveRecord
+class Comment extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'feedback';
+        return 'comment';
     }
 
     /**
@@ -31,7 +31,7 @@ class Feedback extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['id_author'], 'integer'],
             [['created_at'], 'safe'],
-            [['title', 'rating'], 'string', 'max' => 1],
+            [['title', 'rating'], 'string', 'max' => 255],
         ];
     }
 

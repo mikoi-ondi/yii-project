@@ -26,7 +26,7 @@ class City extends \yii\db\ActiveRecord
     {
         return [
             [['date_create'], 'safe'],
-            [['name'], 'string', 'max' => 1],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\feedback\models\Feedback $model */
+/** @var \app\modules\comment\models\Comment $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
@@ -12,13 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => false]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'id_author')->textInput() ?>
 
-    <?= $form->field($model, 'rating')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'rating')->textInput(['maxlength' => false]) ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

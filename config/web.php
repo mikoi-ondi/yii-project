@@ -47,6 +47,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'site/captcha/<refresh:\d+>' => 'site/captcha',
+                'site/captcha/<v:\w+>' => 'site/captcha',
             ],
         ],
 
@@ -61,7 +63,7 @@ $config = [
         'city' => [
             'class' => 'app\modules\city\City'
         ],
-        'feedback' => [
+        'comment' => [
             'class' => 'app\modules\feedback\Feedback'
         ]
     ],

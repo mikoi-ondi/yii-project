@@ -2,16 +2,16 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\FeedbackSearch;
-use app\modules\feedback\models\Feedback;
+use app\models\CommentSearch;
+use app\modules\comment\models\Comment;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * FeedbackController implements the CRUD actions for Feedback model.
+ * commentController implements the CRUD actions for Comment model.
  */
-class FeedbackController extends Controller
+class CommentController extends Controller
 {
     /**
      * @inheritDoc
@@ -22,7 +22,7 @@ class FeedbackController extends Controller
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -32,13 +32,13 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Lists all Feedback models.
+     * Lists all Comment models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new FeedbackSearch();
+        $searchModel = new CommentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Displays a single Feedback model.
+     * Displays a single Comment model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Creates a new Feedback model.
+     * Creates a new Comment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Feedback();
+        $model = new Comment();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Updates an existing Feedback model.
+     * Updates an existing Comment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Deletes an existing Feedback model.
+     * Deletes an existing Comment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Finds the Feedback model based on its primary key value.
+     * Finds the Comment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Feedback the loaded model
+     * @return Comment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Feedback::findOne(['id' => $id])) !== null) {
+        if (($model = Comment::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

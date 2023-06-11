@@ -1,13 +1,13 @@
 <?php
 
-use app\modules\feedback\models\Feedback;
+use app\modules\comment\models\Comment;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 /** @var yii\web\View $this */
-/** @var app\models\FeedbackSearch $searchModel */
+/** @var app\models\CommentSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Feedbacks';
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Feedback', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Comment', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -36,8 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'rating',
             //'created_at',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Feedback $model, $key, $index, $column) {
+                'class' => ActionColumn::class,
+                'urlCreator' => function ($action, Comment $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

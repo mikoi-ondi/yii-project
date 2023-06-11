@@ -14,10 +14,10 @@ class m230608_064245_create_users_table extends Migration
     {
         $this->createTable('{{%users}}', [
             'id' => $this->primaryKey(),
-            'fio' => $this->char(),
-            'email' => $this->char(),
-            'phone' => $this->char(),
-            'password' => $this->char(),
+            'fio' => $this->string(),
+            'email' => $this->string(),
+            'phone' => $this->string(),
+            'password' => $this->string(),
             'date_create' => $this->timestamp()
         ]);
     }

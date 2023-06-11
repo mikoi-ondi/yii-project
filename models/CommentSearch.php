@@ -2,14 +2,14 @@
 
 namespace app\models;
 
-use app\modules\feedback\models\Feedback;
+use app\modules\comment\models\Comment;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * FeedbackSearch represents the model behind the search form of `app\models\Feedback`.
+ * CommentSearch represents the model behind the search form of `app\models\Comment`.
  */
-class FeedbackSearch extends Feedback
+class CommentSearch extends Comment
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class FeedbackSearch extends Feedback
      */
     public function search($params)
     {
-        $query = Feedback::find();
+        $query = Comment::find();
 
         // add conditions that should always apply here
 

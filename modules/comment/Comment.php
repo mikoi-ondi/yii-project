@@ -1,16 +1,16 @@
 <?php
 
-namespace app\modules\feedback;
+namespace app\modules\comment;
 
 /**
- * feedback module definition class
+ * comment module definition class
  */
-class Feedback extends \yii\base\Module
+class Comment extends \yii\base\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\feedback\controllers';
+    public $controllerNamespace = 'app\modules\comment\controllers';
 
     /**
      * {@inheritdoc}

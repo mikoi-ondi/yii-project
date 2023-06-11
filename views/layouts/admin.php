@@ -42,7 +42,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Users', 'url' => ['/admin/user/index']],
             ['label' => 'Cities', 'url' => ['/admin/city/index']],
-            ['label' => 'Feedback', 'url' => ['/admin/feedback/index']],
+            ['label' => 'Comments', 'url' => ['/admin/comment/index']],
         ]
     ]);
     NavBar::end();

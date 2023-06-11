@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\feedback\models\Feedback $model */
+/** @var \app\modules\comment\models\Comment $model */
 
-$this->title = 'Create Feedback';
-$this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
+$this->title = 'Create Comment';
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="feedback-create">
+<div class="comment-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

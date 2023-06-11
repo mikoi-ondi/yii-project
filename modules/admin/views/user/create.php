@@ -1,9 +1,10 @@
 <?php
 
+use app\modules\user\models\User;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\user\models\User $model */
+/** @var User $model */
 
 $this->title = 'Create User';
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];

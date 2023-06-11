@@ -2,10 +2,12 @@
 
 namespace app\modules\user;
 
+use yii\base\Module;
+
 /**
  * user module definition class
  */
-class User extends \yii\base\Module
+class User extends Module
 {
     /**
      * {@inheritdoc}

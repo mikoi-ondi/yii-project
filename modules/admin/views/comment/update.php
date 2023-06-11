@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\feedback\models\Feedback $model */
+/** @var \app\modules\comment\models\Comment $model */
 
-$this->title = 'Update Feedback: ' . $model->title;
+$this->title = 'Update Comment: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

@@ -2,6 +2,9 @@
 
 namespace app\modules\user\models;
 
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\web\IdentityInterface;
 
 /**
@@ -14,12 +17,25 @@ use yii\web\IdentityInterface;
  * @property string|null $password
  * @property string|null $date_create
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
+
+    public function behaviors()
+    {
+        return [
+            // Other behaviors
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'date_create',
+                'updatedAtAttribute' => false,
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return 'users';
     }
@@ -27,18 +43,29 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['date_create'], 'safe'],
-            [['fio', 'email', 'phone', 'password'], 'string', 'max' => 1],
+            [['fio', 'email', 'phone', 'password'], 'string', 'max' => 255],
+            //['fio' => 'ФИО']
         ];
+    }
+
+    public function create(): bool
+    {
+        return $this->save(false);
+    }
+
+    public static function findByEmail($email): array|ActiveRecord|null
+    {
+        return User::find()->where(['email' => $email])->one();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => 'ID',
@@ -50,9 +77,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         ];
     }
 
-    public static function findIdentity($id)
+    public static function findIdentity($id): ? IdentityInterface
     {
-        // TODO: Implement findIdentity() method.
+        return static::findOne($id);
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
