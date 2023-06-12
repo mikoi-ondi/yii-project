@@ -9,6 +9,7 @@ namespace app\modules\comment\models;
  * @property string|null $title
  * @property string|null $text
  * @property int|null $id_author
+ * @property int|null $id_city
  * @property string|null $rating
  * @property string|null $created_at
  */
@@ -28,10 +29,12 @@ class Comment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string'],
-            [['id_author'], 'integer'],
+            [['text', 'title', 'rating'], 'required'],
+            [['text'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 100],
+            [['id_author', 'rating'], 'integer'],
             [['created_at'], 'safe'],
-            [['title', 'rating'], 'string', 'max' => 255],
+            [['rating'], 'number', 'max' => 5],
         ];
     }
 
@@ -45,8 +48,18 @@ class Comment extends \yii\db\ActiveRecord
             'title' => 'Title',
             'text' => 'Text',
             'id_author' => 'Id Author',
+            'id_city' => 'Id City',
             'rating' => 'Rating',
             'created_at' => 'Created At',
         ];
     }
+
+    public function beforeSave($insert)
+    {
+        if ($this->isNewRecord) {
+            $this->created_at = date('Y-m-d H:i:s');
+        }
+        return parent::beforeSave($insert);
+    }
+
 }

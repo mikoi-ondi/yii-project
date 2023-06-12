@@ -52,6 +52,10 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function __toString()
+    {
+        return $this->fio;
+    }
     public function create(): bool
     {
         return $this->save(false);

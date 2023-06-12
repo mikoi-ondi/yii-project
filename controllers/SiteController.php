@@ -69,13 +69,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $query = Comment::find();
-        $count = $query->count();
-
+        $id_city = 1; //тот id города, который укажет пользователь
+        $query = Comment::find()->where(['id_city' => $id_city ])->all();
+        $count = count($query);
         $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 10]);
-        $comments = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+        $comments = array_slice($query, $pagination->offset, $pagination->limit);
+//            ->limit($pagination->limit)
+//            ->all();
         
         return $this->render('index', [
             'comments' => $comments,

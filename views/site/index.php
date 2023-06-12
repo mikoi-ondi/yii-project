@@ -1,4 +1,7 @@
 <?php
+
+use app\modules\comment\models\Comment;
+use app\modules\user\models\User;
 use yii\widgets\LinkPager;
 ?>
 
@@ -7,6 +10,8 @@ use yii\widgets\LinkPager;
     <div class="post">
         <h3><?= $comment->title ?></h3>
         <p><?= $comment->text ?></p>
+        <p><?= $author = User::findOne(['id' => $comment->id_author]);
+               //echo "<p>$author->fio</p>"?></p>
     </div>
 <?php endforeach; ?>
 

@@ -3,19 +3,19 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%cities_feedback}}`.
+ * Handles the creation of table `{{%cities_comments}}`.
  */
-class m230608_064301_create_cities_feedback_table extends Migration
+class m230608_064301_create_cities_comments_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%cities_feedback}}', [
+        $this->createTable('{{%cities_comments}}', [
             'id' => $this->primaryKey(),
             'id_city' => $this->integer(),
-            'id_feedback' => $this->integer()
+            'id_comment' => $this->integer()
         ]);
     }
 
@@ -24,6 +24,6 @@ class m230608_064301_create_cities_feedback_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%cities_feedback}}');
+        $this->dropTable('{{%cities_comments}}');
     }
 }

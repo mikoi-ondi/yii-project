@@ -1,15 +1,17 @@
 <?php
 
+
+use app\modules\comment\models\Comment;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var \app\modules\city\models\City $model */
+/** @var Comment $model */
 
-$this->title = 'Create City';
-$this->params['breadcrumbs'][] = ['label' => 'Cities', 'url' => ['index']];
+$this->title = 'Create Comment';
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="city-create">
+<div class="comment-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
